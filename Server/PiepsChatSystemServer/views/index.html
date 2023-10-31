@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src * 'unsafe-inline';">
+    <title>Pieps Chat System by Freelance Archery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
+    <script src="jquery.js"></script>
+  </head>
+  <body>
+    <div id="nav"></div>
+    <div class="content">
+         <div class="center-content">
+          <div class="user-window">
+            <button id="user-button">Change Username</button>
+            <ol id="user-list">
+              
+            </ol>
+          </div>
+          <div class="chat-window">
+            <ul id="chat-log">
+              
+            </ul>
+          </div>
+         </div>
+         <div class="input-field">
+          <div class="input-center">
+            <div class="input">
+              <input id="input-field" type="text" placeholder="Nachricht eingeben">
+            </div>
+            <div class="send-button">
+              <button id="send-button">Senden</button>
+            </div>
+          </div>
+         </div>
+    <div class="user-change">
+      <input id="username-input" type="text" placeholder="Gib deinen Nutzername">
+      <button id="unsername-input-button">Ok</button>
+    </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+    <script src="index.js"></script>
+    
+  </body>
+</html>
