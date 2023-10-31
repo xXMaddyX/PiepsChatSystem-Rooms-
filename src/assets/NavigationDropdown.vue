@@ -1,14 +1,15 @@
 <script setup lang="ts">
-        
+import { chatRooms } from '../varStore'
 </script>
 
 
 <template>
     <div class="content">
         <ul>
-            <li>Room1</li>
-            <li>Room2</li>
-            <li>Room3</li>
+            <li @click="chatRooms.methods.changeChatroom('Main Room', chatRooms.chatRoomUrls.mainRoom)">Main</li>
+            <li @click="chatRooms.methods.changeChatroom('Room 1', chatRooms.chatRoomUrls.room1)">Room1</li>
+            <li @click="chatRooms.methods.changeChatroom('Room 2', chatRooms.chatRoomUrls.room2)">Room2</li>
+            <li @click="chatRooms.methods.changeChatroom('Room 3', chatRooms.chatRoomUrls.room3)">Room3</li>
         </ul>
     </div>
 </template>

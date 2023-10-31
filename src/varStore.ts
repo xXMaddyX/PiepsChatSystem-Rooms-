@@ -11,8 +11,9 @@ export const chatRooms = reactive({
         room3: "http://127.0.0.1:5000/room3",
     },
     methods: {
-        changeChatroom(choice: any) {
-            chatRooms.actualRoom = choice
+        changeChatroom(choice: string, route: string) {
+            chatRooms.roomNrDisplay = choice
+            chatRooms.actualRoom = route
         }
 
     }
