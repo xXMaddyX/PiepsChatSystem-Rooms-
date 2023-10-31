@@ -1,24 +1,42 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+import { Transition } from 'vue'
 import { navVars } from '../varStore'
 import { RouterLink } from 'vue-router';
 import navDrop from '../assets/NavigationDropdown.vue'
+
+const bodyRef = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
+
+const handleClickOutside = (event: MouseEvent) => {
+  if (bodyRef.value && !bodyRef.value.contains(event.target as Node)) {
+    navVars.navBarBtn = false;
+  }
+};
         
 </script>
 
 
 <template>
-    <div class="body">
+    <div class="body" ref="bodyRef">
         <div class="nav-bar">
             <h2>Piep´s Chat</h2>
             <ul>
                 <li><RouterLink :to="'/'" class="links">Refresh</RouterLink></li>
-                <li @click="navVars.methods.navigateToBlank('https://www.freelance-archery.de/')" class="links">Shop</li>
-                <li @click="navVars.methods.toggleRoomBtn">Button</li>
+                <li @click.self="navVars.methods.toggleRoomBtn">Button</li>
             </ul>
         </div>
-        <div class="room-select">
-            <navDrop v-show="navVars.navBarBtn"/>
-        </div>
+        <Transition name="room-win">
+        <navDrop class="room-select" v-show="navVars.navBarBtn"/>
+        </Transition>
+        
     </div>
 </template>
 
@@ -49,12 +67,22 @@ import navDrop from '../assets/NavigationDropdown.vue'
             li {
                 font-size: 25px;
                 font-weight: 600;
+                cursor: pointer;
+                transition: .3s;
+                &:hover {
+                    color: white;
+                    text-shadow: 2px 2px 8px black;
+                }
             }
         }
     }
     .links {
         text-decoration: none;
         color: #000;
+        transition: .3s;
+        &:hover {
+            color: white;
+        }
     }
     .room-select {
         position: absolute;
@@ -62,6 +90,16 @@ import navDrop from '../assets/NavigationDropdown.vue'
         top: 50%;
         transform: translate(-50%, -50%);
     }
+    .room-win-enter-from, .room-win-leave-to {
+        opacity: 0;
+    }
+    .room-win-enter-to, .room-win-leave-from {
+        opacity: 1;
+    }
+    .room-win-enter-active, .room-win-leave-active {
+        transition: opacity 0.5s ease-in-out;
+    }
+
 }
 
 </style>
