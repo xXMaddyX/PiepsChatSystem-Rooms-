@@ -32,3 +32,21 @@ export const navVars = reactive({
     },
     
 });
+
+//TO DO
+export const chatFunctions = reactive({
+    charVars: {
+        sendMessage: "",
+        getMessage: [],
+    },
+    methods: {
+        async fetchMsg() {
+            const responce = await fetch(chatRooms.actualRoom)
+            const message = responce.json()
+        },
+        sendMsg() {
+
+        }
+
+    }
+})

@@ -38,6 +38,9 @@ import chatContent from '../components/ChatContent.vue'
     margin-bottom: 5px;
     text-align: center;
   }
+  h3 {
+    margin-top: 5px;
+  }
 
 }
 </style>

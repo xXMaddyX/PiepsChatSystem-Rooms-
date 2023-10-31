@@ -4,13 +4,15 @@
 
 
 <template>
-    <div>
-
+    <div class="user-window">
+        
     </div>
 </template>
 
 
 
 <style lang="scss" scoped>
-
+.user-window {
+    padding: 0px;
+}
 </style>

@@ -4,9 +4,7 @@
 
 
 <template>
-    <div>
 
-    </div>
 </template>
 
 
