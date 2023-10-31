@@ -1,9 +1,22 @@
 <script setup lang="ts">
+import navigation from '../components/Navigation.vue'
 
 </script>
 
 <template>
-  <div>
+  <div class="home-content">
+
+    <div class="header">
+      <navigation />
+    </div>
+
+    <div class="center">
+  
+    </div>
+
+    <div class="footer">
+  
+    </div>
 
   </div>
 </template>

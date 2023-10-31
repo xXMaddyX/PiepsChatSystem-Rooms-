@@ -6,6 +6,11 @@ import { RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style lang="scss" scoped>
-
+<style lang="scss">
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+}
 </style>
