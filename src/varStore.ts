@@ -3,6 +3,7 @@ import { reactive } from "vue";
 export const chatRooms = reactive({
     actualRoom: "/",
     roomNrDisplay: "Main Room",
+    username: 'User',
 
     chatRoomUrls: {
         mainRoom: "http://127.0.0.1:5000/",
@@ -14,7 +15,7 @@ export const chatRooms = reactive({
         changeChatroom(choice: string, route: string) {
             chatRooms.roomNrDisplay = choice
             chatRooms.actualRoom = route
-        }
+        },
 
     }
 });

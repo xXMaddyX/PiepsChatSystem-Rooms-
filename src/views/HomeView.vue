@@ -43,4 +43,5 @@ import chatContent from '../components/ChatContent.vue'
   }
 
 }
+
 </style>

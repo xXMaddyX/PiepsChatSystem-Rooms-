@@ -10,10 +10,10 @@ import chatInput from '../assets/ChatInput.vue'
     <div class="body">
         <div class="main">
             <div class="user-list">
-                <chat />
+                <userList />
             </div>
             <div class="chat">
-                <userList />
+                <chat />
             </div>
         </div>
         <div class="chat-inp">
@@ -43,7 +43,6 @@ import chatInput from '../assets/ChatInput.vue'
         }
         .chat {
             width: 100%;
-            height: 80vh;
             background-color: rgb(170, 170, 170);
             border: 1px solid black;
             border-right: none;
