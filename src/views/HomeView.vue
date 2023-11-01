@@ -39,7 +39,10 @@ import chatContent from '../components/ChatContent.vue'
     text-align: center;
   }
   h3 {
-    margin-top: 5px;
+    margin-top: 25px;
+    background-color: gray;
+    font-size: 25px;
+    text-shadow: 2px 2px 8px rgb(70, 70, 70);
   }
 
 }

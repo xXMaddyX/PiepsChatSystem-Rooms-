@@ -6,7 +6,7 @@
 <template>
     <div class="chat-window">
         <ul class="chat-log">
-            <!--TO DO V-For-->
+            <!--TO DO-->
         </ul>
     </div>
 </template>

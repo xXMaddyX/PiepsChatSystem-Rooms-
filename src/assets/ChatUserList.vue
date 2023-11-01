@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import { chatRooms } from '../varStore'
 
 </script>
 
 
 <template>
     <div class="user-window">
-        <button @click="">Change Username</button>
+        <button @click="chatRooms.methods.toggleUsernameWindow">Change Username</button>
         <ol id="user-list">
             <!--TO DO V-For-->
         </ol>

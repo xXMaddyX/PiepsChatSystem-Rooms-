@@ -9,7 +9,13 @@ import rateLimit from 'express-rate-limit';
 const createChatServer = (port: any, hostname: any, chatRoomName: any) => {
     const app = express();
     const server = http.createServer(app);
-    const io = socketIo(server);
+    const io = socketIo(server, {
+        cors: {
+            origin: 'http://localhost:5173',
+            methods: ['GET', 'POST'],
+            credentials: true, 
+        }
+    });
     const namespace = io.of(`/${chatRoomName}`);
     
     const limiter = rateLimit({
@@ -31,7 +37,7 @@ const createChatServer = (port: any, hostname: any, chatRoomName: any) => {
 
     // Socket.io Communication
     io.on('connection', (socket: any) => {
-    console.log('Ein Benutzer hat sich verbunden.');
+    console.log(`Ein Benutzer hat sich verbunden ${chatRoomName}.`);
     socket.on('send-username', (username: any) => {
         console.log(`Ein Nutzer hat sich zu ${username} umbenannt`);
 

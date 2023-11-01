@@ -2,6 +2,8 @@
 import chat from '../assets/Chat.vue'
 import userList from '../assets/ChatUserList.vue'
 import chatInput from '../assets/ChatInput.vue'
+import changeUserName from '../assets/ChangeUserName.vue'
+import { chatRooms } from '../varStore'
 
 </script>
 
@@ -19,6 +21,11 @@ import chatInput from '../assets/ChatInput.vue'
         <div class="chat-inp">
             <chatInput />
         </div>
+        <Transition name="name-change">
+        <div v-show="chatRooms.userNameWindowToggle" class="changeName">
+            <changeUserName />
+        </div>
+        </Transition>
     </div>
 </template>
 
@@ -54,6 +61,21 @@ import chatInput from '../assets/ChatInput.vue'
     .chat-inp {
         display: flex;
         flex-direction: column;
+    }
+    .changeName {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .name-change-enter-from, .name-change-leave-to {
+        opacity: 0;
+    }
+    .name-change-enter-to, .name-change-leave-from {
+        opacity: 1;
+    }
+    .name-change-enter-active, .name-change-leave-active {
+        transition: opacity 0.5s ease-in-out;
     }
 }
 </style>
