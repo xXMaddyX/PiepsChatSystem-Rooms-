@@ -1,12 +1,13 @@
 <script setup lang="ts">
-
+import { chatRooms } from '../varStore';
+import { sockData } from '../socket';
 </script>
 
 
 <template>
     <div class="content">
-        <input id="username-input" type="text" placeholder="Gib deinen Nutzername ein">
-        <button id="username-input-button">Ok</button>
+        <input v-model="chatRooms.username" id="username-input" type="text" placeholder="Gib deinen Nutzername ein">
+        <button @click="sockData.methods.updateUserName" id="username-input-button">Ok</button>
     </div>
 </template>
 

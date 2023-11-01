@@ -5,24 +5,22 @@ import { navVars } from '../varStore'
 import { RouterLink } from 'vue-router';
 import navDrop from '../assets/NavigationDropdown.vue'
 
-const bodyRef = ref<HTMLElement | null>(null);
 
+const bodyRef = ref<HTMLElement | null>(null);
 onMounted(() => {
   document.addEventListener('click', handleClickOutside);
 });
-
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside);
 });
+
 
 const handleClickOutside = (event: MouseEvent) => {
   if (bodyRef.value && !bodyRef.value.contains(event.target as Node)) {
     navVars.navBarBtn = false;
   }
-};
-        
+};    
 </script>
-
 
 <template>
     <div class="body" ref="bodyRef">

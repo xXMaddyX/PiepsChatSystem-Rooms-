@@ -1,5 +1,5 @@
 import { reactive } from "vue";
-import { sockData } from "./socket";
+import { sockData} from "./socket";
 import { io } from 'socket.io-client';
 
 
@@ -9,6 +9,7 @@ export const chatRooms = reactive({
     username: 'User',
     userNameWindowToggle: false,
     greetingMsg: "Willkommen auf Piep´s Server, wähle einen Chatroom um zu chatten!!!",
+    userListData: [] as string[],
 
     chatRoomUrls: {
         mainRoom: "http://127.0.0.1:5000",
@@ -26,7 +27,6 @@ export const chatRooms = reactive({
         toggleUsernameWindow() {
             chatRooms.userNameWindowToggle = !chatRooms.userNameWindowToggle;
         }
-
     }
 });
 

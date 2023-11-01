@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
+import { sockData } from '../socket'
 
 </script>
 
@@ -8,7 +9,8 @@ import { onMounted, onUnmounted } from 'vue'
     <div class="input-field">
         <div class="input-center">
             <div class="input">
-                <input id="input-field" type="text">
+                
+                <input v-model.lazy="sockData.inputMessage" id="input-field" type="text">
             </div>
             <div class="send-button">
                 <button id="send">Senden</button>

@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import { chatRooms } from './varStore';
 import { RouterView } from 'vue-router';
 import { onMounted } from 'vue';
-import { socketIo } from './socket';
+import { sockData } from './socket';
+import { watchEffect } from 'vue';
 
 
+onMounted(() => {
+  sockData.methods.connectToServer(chatRooms.actualRoom)
+});
 
 </script>
 
