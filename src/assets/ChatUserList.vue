@@ -7,8 +7,8 @@ import { chatRooms } from '../varStore'
 <template>
     <div class="user-window">
         <button @click="chatRooms.methods.toggleUsernameWindow">Change Username</button>
-        <ol id="user-list">
-            <!--TO DO V-For-->
+        <ol>
+            <li v-for="item in chatRooms.userListData[0]">{{ item }}</li>
         </ol>
     </div>
 </template>

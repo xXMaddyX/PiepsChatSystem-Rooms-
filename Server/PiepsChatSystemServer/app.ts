@@ -65,6 +65,10 @@ const createChatServer = (port: any, hostname: any, chatRoomName: any) => {
         socket.emit('chat-log', gretting);
     });
 
+    socket.on('get-userlist', () => {
+        socket.emit('userlist', userList)
+    })
+
     //MSG on disconnect
     socket.on('disconnect', () => {
         console.log('Ein Benutzer hat sich getrennt.');

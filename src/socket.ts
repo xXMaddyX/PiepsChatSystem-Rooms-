@@ -13,9 +13,16 @@ export const sockData = reactive({
         connectToServer(actualRoom: string) {
             socketIo = io(actualRoom);  
             socketIo.on('update-user', (updatedUserList) => {
+                chatRooms.userListData = []
                 chatRooms.userListData.push(updatedUserList.map((user: any) => user.username));
                 console.log(chatRooms.userListData)
-            });    
+            });
+            socketIo.on('user-disconnect', (updatedUserList) => {
+                chatRooms.userListData = []
+                chatRooms.userListData.push(updatedUserList.map((user: any) => user.username));
+            });
+            this.getUserListOnConnect()
+            this.sendUsernameOnConnect()
         },
         disconnect() {
             if (socketIo) {
@@ -36,5 +43,12 @@ export const sockData = reactive({
                 chatRooms.userNameWindowToggle = false;
             }
         },
+        getUserListOnConnect() {
+            socketIo!.emit('get-userlist')
+        },
+        sendUsernameOnConnect() {
+            socketIo!.emit('send-username', chatRooms.username)
+        }
+
     }
 });

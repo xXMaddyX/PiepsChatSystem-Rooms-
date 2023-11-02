@@ -8,7 +8,7 @@ export const chatRooms = reactive({
     roomNrDisplay: "Main Room",
     username: 'User',
     userNameWindowToggle: false,
-    greetingMsg: "Willkommen auf Piep´s Server, wähle einen Chatroom um zu chatten!!!",
+    messageList: ["Willkommen auf Piep´s Server, wähle einen Chatroom um zu chatten!!!"],
     userListData: [] as string[],
 
     chatRoomUrls: {
@@ -20,6 +20,7 @@ export const chatRooms = reactive({
     methods: {
         changeChatroom(choice: string, route: string) {
             sockData.methods.disconnect();
+            chatRooms.userListData = []
             chatRooms.roomNrDisplay = choice;
             chatRooms.actualRoom = route;
             sockData.methods.connectToServer(chatRooms.actualRoom);

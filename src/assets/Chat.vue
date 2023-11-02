@@ -1,12 +1,12 @@
 <script setup lang="ts">
-
+import { chatRooms } from '../varStore';
 </script>
 
 
 <template>
     <div class="chat-window">
-        <ul class="chat-log">
-            <!--TO DO-->
+        <ul v-for="item in chatRooms.messageList" class="chat-log">
+            <li>{{ item }}</li>
         </ul>
     </div>
 </template>
