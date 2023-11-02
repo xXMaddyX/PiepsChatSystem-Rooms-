@@ -6,7 +6,7 @@ import { sockData } from '../socket';
 
 <template>
     <div class="content">
-        <input v-model="chatRooms.username" id="username-input" type="text" placeholder="Gib deinen Nutzername ein">
+        <input v-model="chatRooms.username" @keyup.enter="sockData.methods.updateUserName" id="username-input" type="text" placeholder="Gib deinen Nutzername ein">
         <button @click="sockData.methods.updateUserName" id="username-input-button">Ok</button>
     </div>
 </template>

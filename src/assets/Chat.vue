@@ -1,18 +1,33 @@
+// In deiner Vue-Komponente
 <script setup lang="ts">
+import { ref, watch } from 'vue';
 import { chatRooms } from '../varStore';
+import { scrollToBottom } from '../socket'; // oder den korrekten Pfad zu deinem Utility-File
+
+const chatWindowRef = ref<HTMLElement | null>(null);
+
+watch(() => chatRooms.messageList, () => {
+  const element = chatWindowRef.value;
+  if (element) {
+    scrollToBottom(element);
+  }
+}, {
+  deep: true,
+});
 </script>
 
-
 <template>
-    <div class="chat-window">
-        <ul v-for="item in chatRooms.messageList" class="chat-log">
+    <div class="chat-window" ref="chatWindowRef">
+        <ul v-for="(item, index) in chatRooms.messageList" :key="index" class="chat-log">
             <li>
-            <strong :style="{ color: 'blue' }">{{ item.username }}:</strong>
-            <span :style="{ color: 'black' }">{{ item.message }}</span>
+                <strong :style="{ color: 'blue' }">{{ item.username }}:</strong>
+                <span :style="{ color: 'black' }">{{ item.message }}</span>
             </li>
         </ul>
     </div>
 </template>
+
+
 
 
 <style lang="scss" scoped>

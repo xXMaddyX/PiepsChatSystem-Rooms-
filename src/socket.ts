@@ -1,7 +1,7 @@
 import { reactive } from "vue";
 import { io, Socket } from 'socket.io-client'
 import { chatRooms } from './varStore'
-
+import { nextTick } from 'vue';
 
 let socketIo: Socket | null = null;
 
@@ -70,3 +70,12 @@ export const sockData = reactive({
 
     }
 });
+
+
+export function scrollToBottom(element: HTMLElement) {
+  nextTick(() => {
+    if (element) {
+      element.scrollTop = element.scrollHeight;
+    }
+  });
+}

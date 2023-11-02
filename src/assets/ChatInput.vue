@@ -10,7 +10,7 @@ import { sockData } from '../socket'
         <div class="input-center">
             <div class="input">
                 
-                <input v-model.lazy="sockData.inputMessage" id="input-field" type="text">
+                <input v-model="sockData.inputMessage" @keyup.enter="sockData.methods.sendMessage" id="input-field" type="text">
             </div>
             <div class="send-button">
                 <button @click="sockData.methods.sendMessage" id="send">Senden</button>

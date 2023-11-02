@@ -11,7 +11,7 @@ const createChatServer = (port: any, hostname: any, chatRoomName: any) => {
     const server = http.createServer(app);
     const io = socketIo(server, {
         cors: {
-            origin: 'http://localhost:5173',
+            origin: "http://localhost:5173",
             methods: ['GET', 'POST'],
             credentials: true, 
         }
@@ -27,7 +27,7 @@ const createChatServer = (port: any, hostname: any, chatRoomName: any) => {
     const userList: any = [];
     const gretting = [{clientUserName: 'Server', message: `Willkommen im Chatraum ${chatRoomName}`}];
 
-    app.use(express.static(path.join(__dirname, 'views')));
+    app.use(express.static(path.join(__dirname, 'dist')));
     app.use(bodyParser.json());
     app.use(limiter);
 
