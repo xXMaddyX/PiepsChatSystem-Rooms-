@@ -35,22 +35,33 @@ watch(() => chatRooms.messageList, () => {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    flex-wrap: wrap;
     margin: 10px;
     padding: 10px;
     border: 1px solid black;
     border-radius: 20px;
     height: calc(100vh - 240px);
     background-color: rgb(151, 151, 151);
-    li {
+    max-width: 100%;
+    .chat-log {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 100%;
+      li {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
         padding: 15px;
         margin-top: 10px;
-        width: fit-content;
         background-color: gray;
         background: rgb(199, 199, 199);
         border: 1px solid black;
         border-radius: 20px;
         list-style: none;
         font-weight: 600;
+        word-break: break-word;
+      }
     }
 }
 </style>

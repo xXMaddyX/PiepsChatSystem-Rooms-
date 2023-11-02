@@ -48,6 +48,7 @@ import { chatRooms } from '../varStore'
         border-radius: 20px;
         list-style: none;
         font-weight: 600;
+        word-break: break-word;
     }
 
 }

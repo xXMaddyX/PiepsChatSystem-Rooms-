@@ -40,7 +40,7 @@ import { chatRooms } from '../varStore'
         gap: 10px;
         margin-bottom: 20px;
         .user-list {
-            width: 25%;
+            width: 35%;
             background-color: rgb(170, 170, 170);
             border: 1px solid black;
             border-left: none;
