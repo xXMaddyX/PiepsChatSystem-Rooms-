@@ -13,7 +13,7 @@ import { sockData } from '../socket'
                 <input v-model.lazy="sockData.inputMessage" id="input-field" type="text">
             </div>
             <div class="send-button">
-                <button id="send">Senden</button>
+                <button @click="sockData.methods.sendMessage" id="send">Senden</button>
             </div>
         </div>
     </div>

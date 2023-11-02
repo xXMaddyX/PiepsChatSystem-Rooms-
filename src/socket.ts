@@ -6,7 +6,7 @@ import { chatRooms } from './varStore'
 let socketIo: Socket | null = null;
 
 export const sockData = reactive({
-    inputMessage: "" as any,
+    inputMessage: "" as string,
     
 
     methods: {
@@ -21,8 +21,22 @@ export const sockData = reactive({
                 chatRooms.userListData = []
                 chatRooms.userListData.push(updatedUserList.map((user: any) => user.username));
             });
+            socketIo.on('new-message', (message) => {
+                message.clientUserName = message.clientUserName;
+                message.message = message.message;
+                chatRooms.messageList.push(message);
+            });
+            socketIo.on('get-msg-on-connect', (messages) => {
+                chatRooms.messageList = []
+                console.log(messages)
+                for (let message of messages) {
+                   chatRooms.messageList.push(message) 
+                }
+                
+            }),
             this.getUserListOnConnect()
             this.sendUsernameOnConnect()
+            this.getMsgOnConnect()
         },
         disconnect() {
             if (socketIo) {
@@ -30,10 +44,11 @@ export const sockData = reactive({
                 socketIo = null;
             }
         },
-        sendMessage(input: string) {
-            const messageText = input;
-            const sendtext: object = {unsername: chatRooms.username, message: messageText};
-            socketIo!.emit('send.message', sendtext);
+        sendMessage() {
+            const messageText = sockData.inputMessage;
+            const sendtext: object = {username: chatRooms.username, message: messageText};
+            socketIo!.emit('send-message', sendtext);
+            sockData.inputMessage = "";
         },
         updateUserName() {
             if (socketIo) {
@@ -48,6 +63,9 @@ export const sockData = reactive({
         },
         sendUsernameOnConnect() {
             socketIo!.emit('send-username', chatRooms.username)
+        },
+        getMsgOnConnect() {
+            socketIo!.emit('get-message-on-connect');
         }
 
     }

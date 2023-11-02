@@ -6,7 +6,10 @@ import { chatRooms } from '../varStore';
 <template>
     <div class="chat-window">
         <ul v-for="item in chatRooms.messageList" class="chat-log">
-            <li>{{ item }}</li>
+            <li>
+            <strong :style="{ color: 'blue' }">{{ item.username }}:</strong>
+            <span :style="{ color: 'black' }">{{ item.message }}</span>
+            </li>
         </ul>
     </div>
 </template>

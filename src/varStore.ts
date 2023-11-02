@@ -2,13 +2,17 @@ import { reactive } from "vue";
 import { sockData} from "./socket";
 import { io } from 'socket.io-client';
 
+export interface ChatMessage {
+    username: string;
+    message: string;
+}
 
 export const chatRooms = reactive({
     actualRoom: "http://127.0.0.1:5000",
     roomNrDisplay: "Main Room",
     username: 'User',
     userNameWindowToggle: false,
-    messageList: ["Willkommen auf Piep´s Server, wähle einen Chatroom um zu chatten!!!"],
+    messageList: [] as ChatMessage[],
     userListData: [] as string[],
 
     chatRoomUrls: {
@@ -24,6 +28,7 @@ export const chatRooms = reactive({
             chatRooms.roomNrDisplay = choice;
             chatRooms.actualRoom = route;
             sockData.methods.connectToServer(chatRooms.actualRoom);
+            chatRooms.messageList = []
         },
         toggleUsernameWindow() {
             chatRooms.userNameWindowToggle = !chatRooms.userNameWindowToggle;

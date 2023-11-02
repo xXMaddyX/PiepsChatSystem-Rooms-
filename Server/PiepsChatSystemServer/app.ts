@@ -55,10 +55,16 @@ const createChatServer = (port: any, hostname: any, chatRoomName: any) => {
     socket.on('send-message', (message: any) => {
         console.log("Nachricht vom Client empfangen:", message);
         messageList.push(message);
+        console.log(messageList)
 
         //Send MSG to all clients
         io.emit('new-message', messageList[messageList.length - 1]);
     });
+
+    socket.on('get-message-on-connect', () => {
+        socket.emit('get-msg-on-connect', messageList)
+    })
+    
     //Send Chat Log to new connecting clients
     socket.on('get-log', () => {
         socket.emit('chat-log', messageList);
