@@ -34,6 +34,7 @@ export const sockData = reactive({
                 }
                 
             }),
+            this.loadUsernameFromLocal()
             this.getUserListOnConnect()
             this.sendUsernameOnConnect()
             this.getMsgOnConnect()
@@ -56,6 +57,7 @@ export const sockData = reactive({
                 socketIo!.connect()
                 socketIo!.emit('send-username', chatRooms.username)
                 chatRooms.userNameWindowToggle = false;
+                chatRooms.methods.saveUsernameToLocal();
             }
         },
         getUserListOnConnect() {
@@ -66,6 +68,14 @@ export const sockData = reactive({
         },
         getMsgOnConnect() {
             socketIo!.emit('get-message-on-connect');
+        },
+        loadUsernameFromLocal() {
+            if (localStorage.getItem('PiepsChat') === null) {
+                console.log('no Username');
+            } else {
+                let username = localStorage.getItem('PiepsChat');
+                chatRooms.username = username!
+            }
         }
 
     }

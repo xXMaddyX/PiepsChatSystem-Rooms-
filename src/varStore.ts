@@ -32,6 +32,9 @@ export const chatRooms = reactive({
         },
         toggleUsernameWindow() {
             chatRooms.userNameWindowToggle = !chatRooms.userNameWindowToggle;
+        },
+        saveUsernameToLocal() {
+            localStorage.setItem('PiepsChat', chatRooms.username);
         }
     }
 });
