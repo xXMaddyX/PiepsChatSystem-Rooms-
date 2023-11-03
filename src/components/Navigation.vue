@@ -27,7 +27,6 @@ const handleClickOutside = (event: MouseEvent) => {
         <div class="nav-bar">
             <h2>Piep´s Chat</h2>
             <ul>
-                <li><RouterLink :to="'/'" class="links">Refresh</RouterLink></li>
                 <li @click.self="navVars.methods.toggleRoomBtn">Chatrooms</li>
             </ul>
         </div>
