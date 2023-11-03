@@ -1,6 +1,6 @@
 import { reactive } from "vue";
-import { io, Socket } from 'socket.io-client'
-import { chatRooms } from './varStore'
+import { io, Socket } from 'socket.io-client';
+import { chatRooms } from './varStore';
 import { nextTick } from 'vue';
 
 let socketIo: Socket | null = null;
@@ -13,12 +13,12 @@ export const sockData = reactive({
         connectToServer(actualRoom: string) {
             socketIo = io(actualRoom);  
             socketIo.on('update-user', (updatedUserList) => {
-                chatRooms.userListData = []
+                chatRooms.userListData = [];
                 chatRooms.userListData.push(updatedUserList.map((user: any) => user.username));
-                console.log(chatRooms.userListData)
+                console.log(chatRooms.userListData);
             });
             socketIo.on('user-disconnect', (updatedUserList) => {
-                chatRooms.userListData = []
+                chatRooms.userListData = [];
                 chatRooms.userListData.push(updatedUserList.map((user: any) => user.username));
             });
             socketIo.on('new-message', (message) => {
@@ -27,23 +27,23 @@ export const sockData = reactive({
                 chatRooms.messageList.push(message);
             });
             socketIo.on('get-msg-on-connect', (messages) => {
-                chatRooms.messageList = []
-                console.log(messages)
+                chatRooms.messageList = [];
+                console.log(messages);
                 for (let message of messages) {
-                   chatRooms.messageList.push(message) 
+                   chatRooms.messageList.push(message) ;
                 }
                 
             }),
-            this.loadUsernameFromLocal()
-            this.getUserListOnConnect()
-            this.sendUsernameOnConnect()
-            this.getMsgOnConnect()
+            this.loadUsernameFromLocal();
+            this.getUserListOnConnect();
+            this.sendUsernameOnConnect();
+            this.getMsgOnConnect();
         },
         disconnect() {
             if (socketIo) {
                 socketIo.disconnect();
                 socketIo = null;
-            }
+            };
         },
         sendMessage() {
             const messageText = sockData.inputMessage;
@@ -53,18 +53,18 @@ export const sockData = reactive({
         },
         updateUserName() {
             if (socketIo) {
-                socketIo!.disconnect()
-                socketIo!.connect()
-                socketIo!.emit('send-username', chatRooms.username)
+                socketIo!.disconnect();
+                socketIo!.connect();
+                socketIo!.emit('send-username', chatRooms.username);
                 chatRooms.userNameWindowToggle = false;
                 chatRooms.methods.saveUsernameToLocal();
             }
         },
         getUserListOnConnect() {
-            socketIo!.emit('get-userlist')
+            socketIo!.emit('get-userlist');
         },
         sendUsernameOnConnect() {
-            socketIo!.emit('send-username', chatRooms.username)
+            socketIo!.emit('send-username', chatRooms.username);
         },
         getMsgOnConnect() {
             socketIo!.emit('get-message-on-connect');
@@ -74,11 +74,11 @@ export const sockData = reactive({
                 console.log('no Username');
             } else {
                 let username = localStorage.getItem('PiepsChat');
-                chatRooms.username = username!
-            }
-        }
+                chatRooms.username = username!;
+            };
+        },
 
-    }
+    },
 });
 
 
@@ -88,4 +88,4 @@ export function scrollToBottom(element: HTMLElement) {
       element.scrollTop = element.scrollHeight;
     }
   });
-}
+};

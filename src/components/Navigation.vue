@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-import { Transition } from 'vue'
-import { navVars } from '../varStore'
-import { RouterLink } from 'vue-router';
-import navDrop from '../assets/NavigationDropdown.vue'
+import { ref, onMounted, onUnmounted } from 'vue';
+import { Transition } from 'vue';
+import { navVars } from '../varStore';
+import navDrop from '../assets/NavigationDropdown.vue';
 
 
 const bodyRef = ref<HTMLElement | null>(null);

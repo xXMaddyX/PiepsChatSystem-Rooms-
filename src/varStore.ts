@@ -5,7 +5,7 @@ import { io } from 'socket.io-client';
 export interface ChatMessage {
     username: string;
     message: string;
-}
+};
 
 export const chatRooms = reactive({
     actualRoom: "http://127.0.0.1:5000",
@@ -24,19 +24,19 @@ export const chatRooms = reactive({
     methods: {
         changeChatroom(choice: string, route: string) {
             sockData.methods.disconnect();
-            chatRooms.userListData = []
+            chatRooms.userListData = [];
             chatRooms.roomNrDisplay = choice;
             chatRooms.actualRoom = route;
             sockData.methods.connectToServer(chatRooms.actualRoom);
-            chatRooms.messageList = []
+            chatRooms.messageList = [];
         },
         toggleUsernameWindow() {
             chatRooms.userNameWindowToggle = !chatRooms.userNameWindowToggle;
         },
         saveUsernameToLocal() {
             localStorage.setItem('PiepsChat', chatRooms.username);
-        }
-    }
+        },
+    },
 });
 
 export const navVars = reactive({
@@ -47,7 +47,7 @@ export const navVars = reactive({
             window.open(url, '_blank');
         },
         toggleRoomBtn() {
-            navVars.navBarBtn = !navVars.navBarBtn
+            navVars.navBarBtn = !navVars.navBarBtn;
         }
     },
     

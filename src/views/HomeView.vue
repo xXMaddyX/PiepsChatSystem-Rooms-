@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { chatRooms } from '../varStore';
-import navigation from '../components/Navigation.vue'
-import chatContent from '../components/ChatContent.vue'
+import navigation from '../components/Navigation.vue';
+import chatContent from '../components/ChatContent.vue';
 
 
 </script>
@@ -30,7 +30,7 @@ import chatContent from '../components/ChatContent.vue'
 .home-content {
   display: flex;
   flex-direction: column;
-  flex: 3;
+  flex: 1;
   background-color: gray;
   min-height: 100vh;
   .header {
