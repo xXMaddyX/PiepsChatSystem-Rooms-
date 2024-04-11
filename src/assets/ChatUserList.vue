@@ -42,7 +42,6 @@ import { chatRooms } from '../varStore'
         padding: 5px;
         margin-top: 10px;
         text-align: center;
-        background-color: gray;
         background: rgb(199, 199, 199);
         border: 1px solid black;
         border-radius: 20px;
