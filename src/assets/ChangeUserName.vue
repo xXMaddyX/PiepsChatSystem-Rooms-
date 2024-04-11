@@ -19,7 +19,6 @@ import { sockData } from '../socket';
     border: 1px solid black;
     border-radius: 20px;
     box-shadow: 2px 2px 3px black;
-    flex-direction: column;
     background-color: #ff910080;
     padding: 30px;
     input {
