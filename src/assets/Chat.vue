@@ -50,7 +50,6 @@ watch(() => chatRooms.messageList, () => {
         max-width: 100%;
         padding: 15px;
         margin-top: 10px;
-        background-color: gray;
         background: rgb(199, 199, 199);
         border: 1px solid black;
         border-radius: 20px;
